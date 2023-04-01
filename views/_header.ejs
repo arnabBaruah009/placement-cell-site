@@ -7,6 +7,10 @@
         <% } %>
         <p><a href="/user/signIn">Sign In</a></p>
         <p><a href="/interview">Interviews</a></p>
-        <p><a href="/user/home">Home</a></p>
+        <% if (locals.user) { %>
+            <p><a href="/user/home">Home</a></p>
+        <% } else { %>
+            <p><a href="/">Home</a></p>
+        <% } %>
     </div>
 </header>
