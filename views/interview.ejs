@@ -1,0 +1,25 @@
+<h2><%= interview.company_name%></h2>
+
+<form action="/interview/add/<%=interview._id%>" method="post">
+    <select name="student">
+        <% for(let student of remStudents) { %>
+            <option value="<%= student.id %>"><%= student.name %></option>
+        <% } %>
+    </select>
+    <button type="submit">Add</button>
+</form>
+
+<ul>
+    <% for(let student of students) { %>
+        <li><%= student.name %></li>
+        <form action="/interview/result/<%=student._id%>" method="post">
+            <select name="result">
+                <option value="pass">Pass</option>
+                <option value="fail">Fail</option>
+                <option value="onHold">On Hold</option>
+                <option value="dntAttempt">Didn't Attempt</option>
+            </select>
+            <button type="submit">Add</button>
+        </form>
+    <% } %>
+</ul>

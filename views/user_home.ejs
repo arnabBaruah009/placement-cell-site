@@ -1,0 +1,33 @@
+<h2>Hello <%= userName %></h2>
+
+<a href="/user/download">Download Data</a>
+
+<section>
+  <h3>Add Student</h3>
+  <form action="/student/create" method="post">
+    <input type="text" name="name" placeholder="Name" />
+    <input type="text" name="college" placeholder="College" />
+    <input type="number" name="dsaFinalScore" placeholder="DSA Final Score" />
+    <input type="number" name="webDFinalScore" placeholder="WebD Final Score" />
+    <input
+      type="number"
+      name="reactFinalScore"
+      placeholder="React Final Score"
+    />
+    <select name="status">
+      <option value="placed">Placed</option>
+      <option value="not_placed">Not Placed</option>
+    </select>
+    <button type="submit">Add</button>
+  </form>
+
+  <div>
+    <ul>
+      <% for(let student of students) { %>
+      <li><%= student.name %></li>
+      <% } %>
+    </ul>
+  </div>
+
+  <a href="/interview">Interviews</a>
+</section>

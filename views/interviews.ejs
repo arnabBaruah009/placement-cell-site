@@ -1,0 +1,13 @@
+<section>
+  <form action="/interview/create" method="post">
+    <input type="text" name="company_name" placeholder="Company name" />
+    <input type="date" name="date" />
+    <button type="submit">Add</button>
+  </form>
+
+  <ul>
+    <% for(let interview of interviews) { %>
+    <li><a href="/interview/<%= interview._id %>"><%= interview.company_name %></a></li>
+    <% } %>
+  </ul>
+</section>
