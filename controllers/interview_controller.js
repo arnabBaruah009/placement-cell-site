@@ -2,6 +2,7 @@ const Interview = require('../models/interview_Schema');
 const Student = require('../models/student_Schema');
 const Result = require('../models/result_Schema');
 
+//rendering interview page
 module.exports.home = async function(req, res){
     const interviews = await Interview.find({});
     return res.render('interviews', {
@@ -10,11 +11,13 @@ module.exports.home = async function(req, res){
     });
 }
 
+//function to create interviews
 module.exports.create = async function(req, res){
     await Interview.create(req.body);
     return res.redirect('back');
 }
 
+//function to show details of that particular interview
 module.exports.interview = async function(req, res){
     const interview = await Interview.findById(req.params.id).populate('student');
     const remStudents = await Student.find({_id: { $nin: interview.student }});
@@ -26,6 +29,7 @@ module.exports.interview = async function(req, res){
     })
 }
 
+//function to add students to an interview
 module.exports.add = async function(req, res){
     const interview = await Interview.findById(req.params.id);
     interview.student.push(req.body.student);
@@ -36,6 +40,7 @@ module.exports.add = async function(req, res){
     return res.redirect('back');
 }
 
+//function to add result to a student
 module.exports.result = async function(req, res){
     const student = await Student.findById(req.params.id);
     student.result = req.body.result;
